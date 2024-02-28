@@ -72,5 +72,6 @@ The Laravel framework is open-sourced software licensed under the [MIT license](
 4. npm install
 5. npm run dev
 6. php artisan make:migration create_affiliation
+7. php artisan make:migration create_acessLevel
 
 
