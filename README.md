@@ -73,5 +73,7 @@ The Laravel framework is open-sourced software licensed under the [MIT license](
 5. npm run dev
 6. php artisan make:migration create_affiliation
 7. php artisan make:migration create_acessLevel
+8. php artisan make:migration add_column_affiliationid_and_acesslevelid --table=users
+9. php artisan migrate
 
 
