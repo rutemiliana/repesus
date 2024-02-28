@@ -12,7 +12,7 @@
         <!-- Cpf -->
         <div>
             <x-input-label for="cpf" :value="__('Cpf')" />
-            <x-text-input id="cpf" class="block mt-1 w-full" type="text" name="cpf" :value="old('cpf')" required autofocus autocomplete="cpf" />
+            <x-text-input id="cpf" class="block mt-1 w-full" type="text" name="cpf" :value="old('cpf')" required autofocus autocomplete="cpf" maxlength="11" />
             <x-input-error :messages="$errors->get('cpf')" class="mt-2" />
         </div>
 
@@ -40,20 +40,20 @@
         <!-- ORCID -->
         <div>
             <x-input-label for="orcid" :value="__('ORCID')" />
-            <x-text-input id="orcid" class="block mt-1 w-full" type="text" name="orcid" :value="old('orcid')" required autofocus autocomplete="orcid" />
+            <x-text-input id="orcid" class="block mt-1 w-full" type="text" name="orcid" :value="old('orcid')" required autofocus autocomplete="orcid" maxlength="16"/>
             <x-input-error :messages="$errors->get('orcid')" class="mt-2" />
         </div>
 
         <!-- Vinculo -->
         <div>
-            <x-input-label for="affiliationid" :value="__('Vinculo com a RePeSUS')" />
-            <select id="affiliationid" class="block mt-1 w-full" name="affiliationid" required autofocus autocomplete="selecao">
+            <x-input-label for="affiliationId" :value="__('Vinculo com a RePeSUS')" />
+            <select id="affiliationId" class="block mt-1 w-full" name="affiliationId" required autofocus autocomplete="selecao">
                 <option value="">Selecione...</option>
                 @foreach ($affiliations as $affiliation)
-                    <option value="{{ $affiliation->id }}" {{ old('selecao') == $affiliation->id ? 'selected' : '' }}>{{ $affiliation->description }}</option>
+                    <option value="{{ $affiliation->id }}" {{ old('affiliationId') == $affiliation->id ? 'selected' : '' }}>{{ $affiliation->description }}</option>
                 @endforeach
             </select>
-            <x-input-error :messages="$errors->get('affiliationid')" class="mt-2" />
+            <x-input-error :messages="$errors->get('affiliationId')" class="mt-2" />
         </div>
 
         <!-- Password -->
@@ -81,11 +81,11 @@
 
         <div class="flex items-center justify-end mt-4">
             <a class="underline text-sm text-gray-600 hover:text-gray-900 rounded-md focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-indigo-500" href="{{ route('login') }}">
-                {{ __('Already registered?') }}
+                {{ __('Já possui registro?') }}
             </a>
 
             <x-primary-button class="ms-4">
-                {{ __('Register') }}
+                {{ __('Registrar') }}
             </x-primary-button>
         </div>
     </form>
