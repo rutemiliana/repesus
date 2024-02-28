@@ -1,7 +1,7 @@
 <x-guest-layout>
     <form method="POST" action="{{ route('register') }}">
         @csrf
-
+        {{--dd($affiliations)--}}
         <!-- Name -->
         <div>
             <x-input-label for="name" :value="__('Nome')" />
@@ -32,21 +32,33 @@
 
         <!-- Lattes -->
         <div>
-            <x-input-label for="dlattes" :value="__('Lattes')" />
+            <x-input-label for="lattes" :value="__('Lattes')" />
             <x-text-input id="lattes" class="block mt-1 w-full" type="text" name="lattes" :value="old('lattes')" required autofocus autocomplete="lattes" />
             <x-input-error :messages="$errors->get('lattes')" class="mt-2" />
         </div>
 
-        <!-- Lattes -->
+        <!-- ORCID -->
         <div>
             <x-input-label for="orcid" :value="__('ORCID')" />
             <x-text-input id="orcid" class="block mt-1 w-full" type="text" name="orcid" :value="old('orcid')" required autofocus autocomplete="orcid" />
             <x-input-error :messages="$errors->get('orcid')" class="mt-2" />
         </div>
 
+        <!-- Vinculo -->
+        <div>
+            <x-input-label for="affiliationid" :value="__('Vinculo com a RePeSUS')" />
+            <select id="affiliationid" class="block mt-1 w-full" name="affiliationid" required autofocus autocomplete="selecao">
+                <option value="">Selecione...</option>
+                @foreach ($affiliations as $affiliation)
+                    <option value="{{ $affiliation->id }}" {{ old('selecao') == $affiliation->id ? 'selected' : '' }}>{{ $affiliation->description }}</option>
+                @endforeach
+            </select>
+            <x-input-error :messages="$errors->get('affiliationid')" class="mt-2" />
+        </div>
+
         <!-- Password -->
         <div class="mt-4">
-            <x-input-label for="password" :value="__('Password')" />
+            <x-input-label for="password" :value="__('Senha')" />
 
             <x-text-input id="password" class="block mt-1 w-full"
                             type="password"
@@ -58,7 +70,7 @@
 
         <!-- Confirm Password -->
         <div class="mt-4">
-            <x-input-label for="password_confirmation" :value="__('Confirm Password')" />
+            <x-input-label for="password_confirmation" :value="__('Confirmar Senha')" />
 
             <x-text-input id="password_confirmation" class="block mt-1 w-full"
                             type="password"

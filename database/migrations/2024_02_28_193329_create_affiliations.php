@@ -11,7 +11,7 @@ return new class extends Migration
      */
     public function up(): void
     {
-        Schema::create('affiliation', function (Blueprint $table) {
+        Schema::create('affiliations', function (Blueprint $table) {
             $table->id();
             $table->string('description');
             $table->timestamps();

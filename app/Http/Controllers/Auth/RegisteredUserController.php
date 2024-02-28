@@ -4,6 +4,7 @@ namespace App\Http\Controllers\Auth;
 
 use App\Http\Controllers\Controller;
 use App\Models\User;
+use App\Models\Affiliation;
 use App\Providers\RouteServiceProvider;
 use Illuminate\Auth\Events\Registered;
 use Illuminate\Http\RedirectResponse;
@@ -20,7 +21,9 @@ class RegisteredUserController extends Controller
      */
     public function create(): View
     {
-        return view('auth.register');
+        $affiliations = Affiliation::all();
+        //dd($affiliations);
+        return view('auth.register', ['affiliations' => $affiliations]);
     }
 
     /**
@@ -44,7 +47,13 @@ class RegisteredUserController extends Controller
 
         $user = User::create([
             'name' => $request->name,
+            'cpf' => $request->cpf,
+            'dateOfBirth' => $request->dateOfBirth,
             'email' => $request->email,
+            'lattes' => $request->lattes,
+            'orcid' => $request->orcid,
+            'affiliationId' => $request->affiliationId,
+            'acessLevelId' => $request->acessLevelId,
             'password' => Hash::make($request->password),
         ]);
 
