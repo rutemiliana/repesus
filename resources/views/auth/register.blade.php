@@ -4,9 +4,23 @@
 
         <!-- Name -->
         <div>
-            <x-input-label for="name" :value="__('Name')" />
+            <x-input-label for="name" :value="__('Nome')" />
             <x-text-input id="name" class="block mt-1 w-full" type="text" name="name" :value="old('name')" required autofocus autocomplete="name" />
             <x-input-error :messages="$errors->get('name')" class="mt-2" />
+        </div>
+
+        <!-- Cpf -->
+        <div>
+            <x-input-label for="cpf" :value="__('Cpf')" />
+            <x-text-input id="cpf" class="block mt-1 w-full" type="text" name="cpf" :value="old('cpf')" required autofocus autocomplete="cpf" />
+            <x-input-error :messages="$errors->get('cpf')" class="mt-2" />
+        </div>
+
+        <!-- Data de nascimento -->
+        <div>
+            <x-input-label for="dateOfBirth" :value="__('Data de nascimento')" />
+            <x-text-input id="dateOfBirth" class="block mt-1 w-full" type="date" name="dateOfBirth" :value="old('dateOfBirth')" required autofocus autocomplete="dateOfBirth" />
+            <x-input-error :messages="$errors->get('dateOfBirth')" class="mt-2" />
         </div>
 
         <!-- Email Address -->
@@ -14,6 +28,20 @@
             <x-input-label for="email" :value="__('Email')" />
             <x-text-input id="email" class="block mt-1 w-full" type="email" name="email" :value="old('email')" required autocomplete="username" />
             <x-input-error :messages="$errors->get('email')" class="mt-2" />
+        </div>
+
+        <!-- Lattes -->
+        <div>
+            <x-input-label for="dlattes" :value="__('Lattes')" />
+            <x-text-input id="lattes" class="block mt-1 w-full" type="text" name="lattes" :value="old('lattes')" required autofocus autocomplete="lattes" />
+            <x-input-error :messages="$errors->get('lattes')" class="mt-2" />
+        </div>
+
+        <!-- Lattes -->
+        <div>
+            <x-input-label for="orcid" :value="__('ORCID')" />
+            <x-text-input id="orcid" class="block mt-1 w-full" type="text" name="orcid" :value="old('orcid')" required autofocus autocomplete="orcid" />
+            <x-input-error :messages="$errors->get('orcid')" class="mt-2" />
         </div>
 
         <!-- Password -->
