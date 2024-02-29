@@ -11,7 +11,7 @@
 
         <!-- Cpf -->
         <div>
-            <x-input-label for="cpf" :value="__('Cpf')" />
+            <x-input-label for="cpf" :value="__('CPF')" />
             <x-text-input id="cpf" class="block mt-1 w-full" type="text" name="cpf" :value="old('cpf')" required autofocus autocomplete="cpf" maxlength="11" />
             <x-input-error :messages="$errors->get('cpf')" class="mt-2" />
         </div>
@@ -47,7 +47,7 @@
         <!-- Vinculo -->
         <div>
             <x-input-label for="affiliationId" :value="__('Vinculo com a RePeSUS')" />
-            <select id="affiliationId" class="block mt-1 w-full" name="affiliationId" required autofocus autocomplete="selecao">
+            <select id="affiliationId" class="block mt-1 w-full" name="affiliationId" required autofocus autocomplete="affiliationId">
                 <option value="">Selecione...</option>
                 @foreach ($affiliations as $affiliation)
                     <option value="{{ $affiliation->id }}" {{ old('affiliationId') == $affiliation->id ? 'selected' : '' }}>{{ $affiliation->description }}</option>

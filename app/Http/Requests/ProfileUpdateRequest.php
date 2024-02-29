@@ -18,6 +18,11 @@ class ProfileUpdateRequest extends FormRequest
         return [
             'name' => ['required', 'string', 'max:255'],
             'email' => ['required', 'string', 'lowercase', 'email', 'max:255', Rule::unique(User::class)->ignore($this->user()->id)],
+            'cpf' => ['required', 'string', 'max:11', Rule::unique(User::class)->ignore($this->user()->id)],
+            'dateOfBirth' => ['required', 'date'],
+            'lattes' => ['required', 'string', 'max:255'],
+            'orcid' => ['required', 'string', 'max:16'],
+            'affiliationId' => ['required', 'integer'],
         ];
     }
 }
