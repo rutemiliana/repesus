@@ -35,7 +35,7 @@
             <x-input-label for="dateOfBirth" :value="__('Data de nascimento')" />
             <x-text-input id="dateOfBirth" class="block mt-1 w-full" type="date" name="dateOfBirth" :value="old('dateOfBirth', $user->dateOfBirth)" required autofocus autocomplete="dateOfBirth" />
             <x-input-error :messages="$errors->get('dateOfBirth')" class="mt-2" />
-
+        </div>
         <!-- Email -->
 
         <div>
