@@ -33,14 +33,14 @@
         <!-- Lattes -->
         <div>
             <x-input-label for="lattes" :value="__('Lattes')" />
-            <x-text-input id="lattes" class="block mt-1 w-full" type="text" name="lattes" :value="old('lattes')" required autofocus autocomplete="lattes" />
+            <x-text-input id="lattes" class="block mt-1 w-full" type="text" name="lattes" :value="old('lattes')" required autofocus autocomplete="lattes" maxlength="255" />
             <x-input-error :messages="$errors->get('lattes')" class="mt-2" />
         </div>
 
         <!-- ORCID -->
         <div>
             <x-input-label for="orcid" :value="__('ORCID')" />
-            <x-text-input id="orcid" class="block mt-1 w-full" type="text" name="orcid" :value="old('orcid')" required autofocus autocomplete="orcid" maxlength="200"/>
+            <x-text-input id="orcid" class="block mt-1 w-full" type="text" name="orcid" :value="old('orcid')" required autofocus autocomplete="orcid" maxlength="255"/>
             <x-input-error :messages="$errors->get('orcid')" class="mt-2" />
         </div>
 
