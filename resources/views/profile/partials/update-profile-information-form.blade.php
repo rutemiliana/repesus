@@ -19,21 +19,21 @@
 
         <div>
             <x-input-label for="name" :value="__('Name')" />
-            <x-text-input id="name" name="name" type="text" class="mt-1 block w-full" :value="old('name', $user->name)" required autofocus autocomplete="name" />
+            <x-text-input id="name" name="name" type="text" class="mt-1 block w-full" :value="old('name', $user->name)" required autofocus autocomplete="name" readonly disabled/>
             <x-input-error class="mt-2" :messages="$errors->get('name')" />
         </div>
 
         <!-- Cpf -->
         <div>
             <x-input-label for="cpf" :value="__('CPF')" />
-            <x-text-input id="cpf" class="block mt-1 w-full" type="text" name="cpf" :value="old('cpf', $user->cpf)" required autofocus autocomplete="cpf" maxlength="11" />
+            <x-text-input id="cpf" class="block mt-1 w-full" type="text" name="cpf" :value="old('cpf', $user->cpf)" required autofocus autocomplete="cpf" maxlength="11" readonly disabled />
             <x-input-error :messages="$errors->get('cpf')" class="mt-2" />
         </div>
 
         <!-- Data de nascimento -->
         <div>
             <x-input-label for="dateOfBirth" :value="__('Data de nascimento')" />
-            <x-text-input id="dateOfBirth" class="block mt-1 w-full" type="date" name="dateOfBirth" :value="old('dateOfBirth', $user->dateOfBirth)" required autofocus autocomplete="dateOfBirth" />
+            <x-text-input id="dateOfBirth" class="block mt-1 w-full" type="date" name="dateOfBirth" :value="old('dateOfBirth', $user->dateOfBirth)" required autofocus autocomplete="dateOfBirth" readonly disabled/>
             <x-input-error :messages="$errors->get('dateOfBirth')" class="mt-2" />
         </div>
         <!-- Email -->

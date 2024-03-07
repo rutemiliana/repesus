@@ -40,7 +40,7 @@
         <!-- ORCID -->
         <div>
             <x-input-label for="orcid" :value="__('ORCID')" />
-            <x-text-input id="orcid" class="block mt-1 w-full" type="text" name="orcid" :value="old('orcid')" required autofocus autocomplete="orcid" maxlength="16"/>
+            <x-text-input id="orcid" class="block mt-1 w-full" type="text" name="orcid" :value="old('orcid')" required autofocus autocomplete="orcid" maxlength="200"/>
             <x-input-error :messages="$errors->get('orcid')" class="mt-2" />
         </div>
 

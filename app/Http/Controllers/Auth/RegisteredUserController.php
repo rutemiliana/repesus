@@ -40,7 +40,7 @@ class RegisteredUserController extends Controller
             'dateOfBirth' => ['required', 'date'],
             'email' => ['required', 'string', 'lowercase', 'email', 'max:255', 'unique:'.User::class],
             'lattes' => ['required', 'string', 'max:255'],
-            'orcid' => ['required', 'string', 'max:16'],
+            'orcid' => ['required', 'string', 'max:200'],
             'affiliationId' => ['required', 'integer'],
             'password' => ['required', 'confirmed', Rules\Password::defaults()],
         ]);
