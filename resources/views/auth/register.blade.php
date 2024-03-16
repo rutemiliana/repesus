@@ -13,7 +13,8 @@
         <div>
             <x-input-label for="cpf" :value="__('CPF')" />
             <x-text-input id="cpf" class="block mt-1 w-full" type="text" name="cpf" :value="old('cpf')" required autofocus autocomplete="cpf" maxlength="11" />
-            <x-input-error :messages="$errors->get('cpf')" class="mt-2" />
+            <x-input-error :messages="$errors->get('cpf')" class="mt-2"  />
+            <p class="mt-2" id= "resultado"></p>
         </div>
 
         <!-- Data de nascimento -->
@@ -90,3 +91,55 @@
         </div>
     </form>
 </x-guest-layout>
+
+<script>
+    function validarCPF(cpf) {
+        // Remova qualquer caractere não numérico do CPF
+        cpf = cpf.replace(/\D+/g, '');
+
+        // Verifique se o CPF tem 11 dígitos
+        if (cpf.length !== 11) {
+            return false;
+        }
+
+        // Calcule o primeiro dígito verificador
+        let soma = 0;
+        for (let i = 1; i <= 9; i++) {
+            soma += parseInt(cpf.substring(i - 1, i)) * (11 - i);
+        }
+        let resto = (soma * 10) % 11;
+        if (resto === 10 || resto === 11) {
+            resto = 0;
+        }
+        if (resto !== parseInt(cpf.substring(9, 10))) {
+            return false;
+        }
+
+        // Calcule o segundo dígito verificador
+        soma = 0;
+        for (let i = 1; i <= 10; i++) {
+            soma += parseInt(cpf.substring(i - 1, i)) * (12 - i);
+        }
+        resto = (soma * 10) % 11;
+        if (resto === 10 || resto === 11) {
+            resto = 0;
+        }
+        if (resto !== parseInt(cpf.substring(10, 11))) {
+            return false;
+        }
+
+        // Se chegou até aqui, o CPF é válido
+        return true;
+    }
+
+    document.getElementById('cpf').addEventListener('input', function() {
+            const cpf = this.value.replace(/\D+/g, ''); // Remove caracteres não numéricos
+            const isValidCPF = validarCPF(cpf);
+
+            if (isValidCPF) {
+                document.getElementById('resultado').textContent = 'CPF válido!';
+            } else {
+                document.getElementById('resultado').textContent = 'CPF inválido!';
+            }
+        });
+</script>
