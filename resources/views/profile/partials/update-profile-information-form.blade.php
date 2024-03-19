@@ -82,7 +82,7 @@
             <select id="affiliationId" class="block mt-1 w-full" name="affiliationId" required autofocus autocomplete="selecao">
                 <option value="">Selecione...</option>
                 @foreach ($affiliations as $affiliation)
-                    <option value="{{ $affiliation->id }}" {{ old('affiliationId', $user->affiliationId) == $affiliation->id ? 'selected' : '' }}>{{ $affiliation->description }}</option>
+                    <option value="{{ $affiliation->id }}" {{ old('affiliationId', $user->affiliation_id) == $affiliation->id ? 'selected' : '' }}>{{ $affiliation->description }}</option>
                 @endforeach
             </select>
             <x-input-error :messages="$errors->get('affiliationId')" class="mt-2" />

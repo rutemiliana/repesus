@@ -24,8 +24,8 @@ class User extends Authenticatable
         'email',
         'lattes',
         'orcid',
-        'affiliationId',
-        'acessLevelId',
+        'affiliation_id',
+        'access_level_id',
         'password'
     ];
 

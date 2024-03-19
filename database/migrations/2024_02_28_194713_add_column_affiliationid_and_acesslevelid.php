@@ -12,10 +12,8 @@ return new class extends Migration
     public function up(): void
     {
         Schema::table('users', function (Blueprint $table) {
-            $table->integer('affiliationId')->nullable();
-            $table->integer('acessLevelId')->nullable();
-
-
+            $table->foreignId('affiliation_id')->constrained()->onUpdate('cascade')->onDelete('cascade');
+            $table->foreignId('access_level_id')->constrained()->onUpdate('cascade')->onDelete('cascade');
         });
     }
 
@@ -25,8 +23,8 @@ return new class extends Migration
     public function down(): void
     {
         Schema::table('users', function (Blueprint $table) {
-            $table->dropColumn('affiliationId');
-            $table->dropColumn('acessLevelId');
+            $table->dropForeign(['affiliation_id']);
+            $table->dropForeign(['access_level_id']);
         });
     }
 };

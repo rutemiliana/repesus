@@ -33,7 +33,6 @@ class RegisteredUserController extends Controller
      */
     public function store(Request $request): RedirectResponse
     {
-        //dd($request->affiliationId);
         $request->validate([
             'name' => ['required', 'string', 'max:255'],
             'cpf' => ['required', 'string', 'max:11','unique:'.User::class],
@@ -41,9 +40,10 @@ class RegisteredUserController extends Controller
             'email' => ['required', 'string', 'lowercase', 'email', 'max:255', 'unique:'.User::class],
             'lattes' => ['required', 'string', 'max:255'],
             'orcid' => ['required', 'string', 'max:200'],
-            'affiliationId' => ['required', 'integer'],
+            'affiliationId' => ['required'],
             'password' => ['required', 'confirmed', Rules\Password::defaults()],
         ]);
+        //dd($request->affiliationId);
 
         $user = User::create([
             'name' => $request->name,
@@ -52,8 +52,8 @@ class RegisteredUserController extends Controller
             'email' => $request->email,
             'lattes' => $request->lattes,
             'orcid' => $request->orcid,
-            'affiliationId' => $request->affiliationId,
-            'acessLevelId' => 2,
+            'affiliation_id' => $request->affiliationId,
+            'access_level_id' => 2,
             'password' => Hash::make($request->password),
         ]);
 
