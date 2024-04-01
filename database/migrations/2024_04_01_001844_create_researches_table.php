@@ -22,9 +22,9 @@ return new class extends Migration
             $table->text('method');
             $table->text('schedule');
             $table->string('budget');
-            $table->boolean('active')->default(0);
-            $table->foreignId('user_id')->constrained()->onDelete('cascade');
-            $table->foreignId('status_id')->constrained('status')->onDelete('cascade');
+            $table->boolean('active')->default(1);
+            $table->foreignId('user_id')->constrained('users');
+            $table->foreignId('status_id')->constrained('status');
             $table->timestamps();
         });
     }
