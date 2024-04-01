@@ -1,6 +1,8 @@
 <?php
 
 use App\Http\Controllers\ProfileController;
+use App\Http\Controllers\ResearchController;
+
 use Illuminate\Support\Facades\Route;
 
 /*
@@ -27,9 +29,10 @@ Route::middleware('auth')->group(function () {
     Route::patch('/profile', [ProfileController::class, 'update'])->name('profile.update');
     Route::delete('/profile', [ProfileController::class, 'destroy'])->name('profile.destroy');
 
-    Route::get('/researches', function () {
-        return view('researches.create');
-    });
+    Route::get('research', [ResearchController::class, 'create'])->name('research.create');
+    Route::post('research', [ResearchController::class, 'store'])->name('research.store');
+
+    
 
 });
 

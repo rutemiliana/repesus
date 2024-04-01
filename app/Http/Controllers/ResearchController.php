@@ -1,64 +1,99 @@
 <?php
 
 namespace App\Http\Controllers;
+use Illuminate\Support\Facades\Auth;
 
 use Illuminate\Http\Request;
 
 class ResearchController extends Controller
 {
-    /**
-     * Display a listing of the resource.
-     */
     public function index()
     {
-        //
+        $researches = Research::all();
+        return view('researches.index', compact('researches'));
     }
 
-    /**
-     * Show the form for creating a new resource.
-     */
     public function create()
     {
-        //
+        return view('researches.create');
     }
 
-    /**
-     * Store a newly created resource in storage.
-     */
     public function store(Request $request)
     {
-        //
+       // dd(Auth::id());
+
+        $request->validate([
+            'field' => 'required|string',
+            'title' => 'required|string',
+            'authors' => 'required|string',
+            'introduction' => 'required|string',
+            'justification' => 'required|string',
+            'objective' => 'required|string',
+            'method' => 'required|string',
+            'schedule' => 'required|string',
+            'budget' => 'required|string',
+        ]);
+
+        $user = Research::create([
+            'field' => $request->field,
+            'title' => $request->title,
+            'authors' => $request->authors,
+            'introduction' => $request->introduction,
+            'justification' => $request->justification,
+            'objective' => $request->objective,
+            'method' => $request->method,
+            'schedule' => $request->schedule,
+            'budget' => $request->budget,
+            'active' => 1,
+            'user_id' => Auth::id(),
+            'status_id' => 1,
+        ]);
+
+
+       Research::create($request->all());
+
+        return redirect()->route('dashboard')
+           ->with('success', 'Research created successfully.');
     }
 
-    /**
-     * Display the specified resource.
-     */
-    public function show(string $id)
+    public function show(Research $research)
     {
-        //
+        return view('researches.show', compact('research'));
     }
 
-    /**
-     * Show the form for editing the specified resource.
-     */
-    public function edit(string $id)
+    public function edit(Research $research)
     {
-        //
+        return view('researches.edit', compact('research'));
     }
 
-    /**
-     * Update the specified resource in storage.
-     */
-    public function update(Request $request, string $id)
+    public function update(Request $request, Research $research)
     {
-        //
+        $request->validate([
+            'field' => 'required|string',
+            'title' => 'required|string',
+            'authors' => 'required|string',
+            'introduction' => 'required|string',
+            'justification' => 'required|string',
+            'objective' => 'required|string',
+            'method' => 'required|string',
+            'schedule' => 'required|string',
+            'budget' => 'required|string',
+            'active' => 'required|boolean',
+            'user_id' => 'required|exists:users,id',
+            'status_id' => 'required|exists:statuses,id',
+        ]);
+
+        $research->update($request->all());
+
+        return redirect()->route('researches.index')
+            ->with('success', 'Research updated successfully');
     }
 
-    /**
-     * Remove the specified resource from storage.
-     */
-    public function destroy(string $id)
+    public function destroy(Research $research)
     {
-        //
+        $research->delete();
+
+        return redirect()->route('researches.index')
+            ->with('success', 'Research deleted successfully');
     }
 }
