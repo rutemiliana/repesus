@@ -16,13 +16,16 @@ return new class extends Migration
             $table->string('field');
             $table->string('title');
             $table->string('authors');
-            $table->string('introduction');
-            $table->string('justification');
-            $table->string('objective');
-            $table->string('method');
-            $table->string('Schedule');
-            $table->boolean('active');
-            $table->foreignId('user_id')->constrained()->onUpdate('cascade')->onDelete('cascade');;
+            $table->text('introduction');
+            $table->text('justification');
+            $table->text('objective');
+            $table->text('method');
+            $table->text('schedule');
+            $table->string('budget');
+            $table->boolean('active')->default(0);
+            $table->foreignId('user_id')->constrained()->onDelete('cascade');
+            $table->foreignId('status_id')->constrained('status')->onDelete('cascade');
+            $table->timestamps();
         });
     }
 
