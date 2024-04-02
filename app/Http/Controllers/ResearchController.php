@@ -14,7 +14,7 @@ class ResearchController extends Controller
     public function index()
     {
         $user = Auth::user();
-        $researches = Research::with('user', 'status')->where('user_id', $user->id)->paginate(10);
+        $researches = Research::with('user', 'status')->where('user_id', $user->id)->where('active', 1)->paginate(10);
         return view('researches.index', compact('researches'));
     }
 
@@ -86,7 +86,18 @@ class ResearchController extends Controller
             'budget' => 'required|string',
         ]);
 
-        $research->update($request->all());
+        $research->update([
+            'field' => $request->field,
+            'title' => $request->title,
+            'authors' => $request->authors,
+            'introduction' => $request->introduction,
+            'justification' => $request->justification,
+            'objective' => $request->objective,
+            'method' => $request->method,
+            'schedule' => $request->schedule,
+            'budget' => $request->budget,
+        ]);
+
 
         return redirect()->route('research.index')
             ->with('success', 'Pesquisa atualizada com sucesso');
@@ -94,9 +105,14 @@ class ResearchController extends Controller
 
     public function destroy(Research $research)
     {
-        $research->delete();
+        //dd($research->id);
 
-        return redirect()->route('researches.index')
-            ->with('success', 'Research deleted successfully');
+        $research->update([
+            'active' => 0
+        ]);
+        //$research->delete();
+
+        return redirect()->route('research.index')
+            ->with('success', 'Pesquisa excluída com sucesso');
     }
 }

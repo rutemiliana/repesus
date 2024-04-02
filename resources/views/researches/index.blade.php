@@ -1,7 +1,7 @@
 <x-app-layout>
     <x-slot name="header">
         <h2 class="font-semibold text-xl text-gray-800 leading-tight">
-            {{ __('Minhas submissões') }}
+            {{ __('Minhas pesquisas') }}
         </h2>
     </x-slot>
 
@@ -10,7 +10,7 @@
             <div class="bg-white overflow-hidden shadow-sm sm:rounded-lg">
                 <div class="p-6 bg-white border-b border-gray-200">
                     <a href="{{ route('research.create') }}" class="text-blue-600 underline hover:text-blue-900">
-                        {{ __('Criar pesquisa') }}
+                        {{ __('Registrar pesquisa') }}
                     </a>
                 </div>
             </div>
@@ -65,7 +65,7 @@
                                         <a href="{{ route('research.edit', $research->id) }}" class="text-indigo-600 hover:text-indigo-900">Editar</a>
                                     </td>
                                     <td class="px-6 py-4 whitespace-normal text-center">
-                                        <a href="#" class="text-red-600 hover:text-red-900">Deletar</a>
+                                        <a href="{{ route('research.destroy', $research->id)}}" class="text-red-600 hover:text-red-900">Deletar</a>
                                     </td>
                                 </tr>
                                 @endforeach
