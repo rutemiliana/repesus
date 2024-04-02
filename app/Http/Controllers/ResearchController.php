@@ -115,4 +115,18 @@ class ResearchController extends Controller
         return redirect()->route('research.index')
             ->with('success', 'Pesquisa excluída com sucesso');
     }
+
+    public function researches()
+    {
+        $user = Auth::user();
+        $researches = Research::with('user', 'status')->where('user_id', '!=', $user->id)->where('status_id', 1)->where('active', 1)->paginate(10);
+        return view('researches.network', compact('researches'));
+    }
+
+    public function detail(Research $research)
+    {
+        //dd($research->id);
+        //dd($request->route()->parameters());
+        return view('researches.research_detail', compact('research'));
+    }
 }

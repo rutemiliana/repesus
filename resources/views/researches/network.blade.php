@@ -1,20 +1,12 @@
 <x-app-layout>
     <x-slot name="header">
         <h2 class="font-semibold text-xl text-gray-800 leading-tight">
-            {{ __('Minhas pesquisas') }}
+            {{ __('Pesquisas em andamento na rede') }}
         </h2>
     </x-slot>
 
     <div class="py-12">
         <div class="max-w-5xl mx-auto sm:px-6 lg:px-8">
-            <div class="bg-white overflow-hidden shadow-sm sm:rounded-lg">
-                <div class="p-6 bg-white border-b border-gray-200">
-                    <a href="{{ route('research.create') }}" class="text-blue-600 underline hover:text-blue-900">
-                        {{ __('Registrar pesquisa') }}
-                    </a>
-                </div>
-            </div>
-
             <div class="overflow-hidden bg-white shadow-sm sm:rounded-lg mt-4">
                 <div class="p-6 bg-white border-b border-gray-200">
                     @if(session('success'))
@@ -39,10 +31,10 @@
                                         Status
                                     </th>
                                     <th scope="col" class="px-6 py-3 text-center text-xs font-medium text-gray-500 uppercase tracking-wider">
-                                        Editar
+                                        Responsável
                                     </th>
                                     <th scope="col" class="px-6 py-3 text-center text-xs font-medium text-gray-500 uppercase tracking-wider">
-                                        Deletar
+                                        Detalhes
                                     </th>
                                 </tr>
                             </thead>
@@ -61,12 +53,13 @@
                                     <td class="px-6 py-4 whitespace-normal break-all">
                                         <div class="text-sm text-gray-500">{{ $research->status->description }}</div>
                                     </td>
-                                    <td class="px-6 py-4 whitespace-normal text-center">
-                                        <a href="{{ route('research.edit', $research->id) }}" class="text-indigo-600 hover:text-indigo-900">Editar</a>
+                                    <td class="px-6 py-4 whitespace-normal break-all">
+                                        <div class="text-sm text-gray-500">{{ $research->user->name }}</div>
                                     </td>
                                     <td class="px-6 py-4 whitespace-normal text-center">
-                                        <a href="{{ route('research.destroy', $research->id)}}" class="text-red-600 hover:text-red-900">Deletar</a>
+                                        <a href="{{ route('research.detail', $research->id) }}" class="text-indigo-600 hover:text-indigo-900">Ver detalhes</a>
                                     </td>
+                                    
                                 </tr>
                                 @endforeach
                             </tbody>

@@ -37,6 +37,11 @@ Route::middleware('auth')->group(function () {
     Route::get('research', [ResearchController::class, 'index'])->name('research.index');
     Route::post('research', [ResearchController::class, 'store'])->name('research.store');
 
+    Route::get('researches', [ResearchController::class, 'researches'])->name('researches.network');
+    Route::get('/research/{research}/detail', [ResearchController::class, 'detail'])->name('research.detail');
+
+
+
 
     
 
