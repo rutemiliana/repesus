@@ -29,7 +29,10 @@ Route::middleware('auth')->group(function () {
     Route::patch('/profile', [ProfileController::class, 'update'])->name('profile.update');
     Route::delete('/profile', [ProfileController::class, 'destroy'])->name('profile.destroy');
 
-    Route::get('research', [ResearchController::class, 'create'])->name('research.create');
+    Route::get('research/create', [ResearchController::class, 'create'])->name('research.create');
+    Route::patch('research', [ResearchController::class, 'update'])->name('research.update');
+    Route::get('/research/{research}/edit', [ResearchController::class, 'edit'])->name('research.edit');
+
     Route::get('research', [ResearchController::class, 'index'])->name('research.index');
     Route::post('research', [ResearchController::class, 'store'])->name('research.store');
 

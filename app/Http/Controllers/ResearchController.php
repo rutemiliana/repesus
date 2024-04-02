@@ -56,7 +56,7 @@ class ResearchController extends Controller
 
 
 
-        return redirect()->route('dashboard')
+        return redirect()->route('research.index')
            ->with('success', 'Pesquisa criada com sucesso.');
     }
 
@@ -67,6 +67,8 @@ class ResearchController extends Controller
 
     public function edit(Research $research)
     {
+        //dd($research->id);
+        //dd($request->route()->parameters());
         return view('researches.edit', compact('research'));
     }
 
@@ -82,15 +84,12 @@ class ResearchController extends Controller
             'method' => 'required|string',
             'schedule' => 'required|string',
             'budget' => 'required|string',
-            'active' => 'required|boolean',
-            'user_id' => 'required|exists:users,id',
-            'status_id' => 'required|exists:statuses,id',
         ]);
 
         $research->update($request->all());
 
-        return redirect()->route('researches.index')
-            ->with('success', 'Research updated successfully');
+        return redirect()->route('research.index')
+            ->with('success', 'Pesquisa atualizada com sucesso');
     }
 
     public function destroy(Research $research)

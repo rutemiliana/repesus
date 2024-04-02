@@ -6,53 +6,75 @@
     </x-slot>
 
     <div class="py-12">
-        <div class="mx-auto max-w-7xl sm:px-6 lg:px-8">
-            <div class="px-4 sm:px-6 lg:px-8">
-                <div class="mb-4 sm:flex-auto">
-                    <p class="mt-2 text-sm text-gray-700">A list of all the clients.</p>
-                    <a class="text-sm text-blue-600 underline rounded-md dark:text-gray-400 hover:text-gray-900 dark:hover:text-gray-100 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-indigo-500 dark:focus:ring-offset-gray-800" href="">
-                        {{ __('Create client') }}
+        <div class="max-w-5xl mx-auto sm:px-6 lg:px-8">
+            <div class="bg-white overflow-hidden shadow-sm sm:rounded-lg">
+                <div class="p-6 bg-white border-b border-gray-200">
+                    <a href="{{ route('research.create') }}" class="text-blue-600 underline hover:text-blue-900">
+                        {{ __('Criar pesquisa') }}
                     </a>
-                  </div>
                 </div>
-                <div class="max-w-2xl overflow-hidden shadow ring-1 ring-black ring-opacity-5 md:rounded-lg">
-                    <table class="divide-y divide-gray-300">
-                      <thead class="bg-gray-50">
-                        <tr>
-                          <th scope="col" class="py-3.5 pl-4 pr-3 text-left text-sm font-semibold text-gray-900 sm:pl-6">Name</th>
-                          <th scope="col" class="px-3 py-3.5 text-left text-sm font-semibold text-gray-900">Email</th>
-                          <th scope="col" class="px-3 py-3.5 text-left text-sm font-semibold text-gray-900">City</th>
-                          <th scope="col" class="px-3 py-3.5 text-left text-sm font-semibold text-gray-900">State</th>
-                          <th scope="col" class="relative py-3.5 pl-3 pr-4 sm:pr-6">
-                            <span>Edit</span>
-                          </th>
-                          <th scope="col" class="relative py-3.5 pl-3 pr-4 sm:pr-6">
-                            <span >Delete</span>
-                          </th>
-                        </tr>
-                      </thead>
-                      <tbody class="bg-white divide-y divide-gray-200">
-                       {{-- @foreach ($clients as $client)--}}
-                            <tr>
-                                <td class="py-4 pl-4 pr-3 text-sm font-medium text-gray-900 whitespace-nowrap sm:pl-6"></td>
-                                <td class="px-3 py-4 text-sm text-gray-500 whitespace-nowrap"></td>
-                                <td class="px-3 py-4 text-sm text-gray-500 whitespace-nowrap"></td>
-                                <td class="px-3 py-4 text-sm text-gray-500 whitespace-nowrap"></td>
-                                <td class="relative py-4 pl-3 pr-4 text-sm font-medium text-right whitespace-nowrap sm:pr-6">
-                                <a href="" class="text-indigo-600 hover:text-indigo-900">Edit</a>
-                                </td>
-                                <td class="relative py-4 pl-3 pr-4 text-sm font-medium text-right whitespace-nowrap sm:pr-6">
-                                    delete
-                                </td>
-                            </tr>
-                        {{--@endforeach --}}
-                        <!-- More people... -->
-                      </tbody>
-                    </table>
-                  </div>
-                  {{-- $clients->links() --}}
-              </div>
+            </div>
 
+            <div class="overflow-hidden bg-white shadow-sm sm:rounded-lg mt-4">
+                <div class="p-6 bg-white border-b border-gray-200">
+                @if(session('success'))
+                    <div class="bg-green-100 border border-green-400 text-green-700 px-4 py-3 rounded relative" role="alert">
+                        <span class="block sm:inline">{{ session('success') }}</span>
+                    </div>
+                @endif
+                    <div class="overflow-x-auto">
+                        <table class="w-full divide-y divide-gray-200">
+                            <thead>
+                                <tr>
+                                    <th scope="col" class="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">
+                                        Campo
+                                    </th>
+                                    <th scope="col" class="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">
+                                        Título
+                                    </th>
+                                    <th scope="col" class="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">
+                                        Autores
+                                    </th>
+                                    <th scope="col" class="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">
+                                        Status
+                                    </th>
+                                    <th scope="col" class="px-6 py-3 text-center text-xs font-medium text-gray-500 uppercase tracking-wider">
+                                        Editar
+                                    </th>
+                                    <th scope="col" class="px-6 py-3 text-center text-xs font-medium text-gray-500 uppercase tracking-wider">
+                                        Deletar
+                                    </th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                @foreach ($researches as $research)
+                                <tr>
+                                    <td class="px-6 py-4 whitespace-normal break-all">
+                                        <div class="text-sm text-gray-900">{{ $research->field }}</div>
+                                    </td>
+                                    <td class="px-6 py-4 whitespace-normal break-all">
+                                        <div class="text-sm text-gray-500">{{ $research->title }}</div>
+                                    </td>
+                                    <td class="px-6 py-4 whitespace-normal break-all">
+                                        <div class="text-sm text-gray-500">{{ $research->authors }}</div>
+                                    </td>
+                                    <td class="px-6 py-4 whitespace-normal break-all">
+                                        <div class="text-sm text-gray-500">{{ $research->status->description }}</div>
+                                    </td>
+                                    <td class="px-6 py-4 whitespace-normal text-center">
+                                        <a href="{{ route('research.edit', $research->id) }}" class="text-indigo-600 hover:text-indigo-900">Editar</a>
+                                    </td>
+                                    <td class="px-6 py-4 whitespace-normal text-center">
+                                        <a href="#" class="text-red-600 hover:text-red-900">Deletar</a>
+                                    </td>
+                                </tr>
+                                @endforeach
+                            </tbody>
+                        </table>
+                    </div>
+                </div>
+            </div>
+            {{ $researches->links() }}
         </div>
     </div>
 </x-app-layout>
