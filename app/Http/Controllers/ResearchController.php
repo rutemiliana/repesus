@@ -2,6 +2,10 @@
 
 namespace App\Http\Controllers;
 use Illuminate\Support\Facades\Auth;
+use App\Models\Research;
+use App\Models\User;
+
+
 
 use Illuminate\Http\Request;
 
@@ -9,7 +13,8 @@ class ResearchController extends Controller
 {
     public function index()
     {
-        $researches = Research::all();
+        $user = Auth::user();
+        $researches = Research::with('user', 'status')->where('user_id', $user->id)->paginate(10);
         return view('researches.index', compact('researches'));
     }
 
@@ -50,10 +55,9 @@ class ResearchController extends Controller
         ]);
 
 
-       Research::create($request->all());
 
         return redirect()->route('dashboard')
-           ->with('success', 'Research created successfully.');
+           ->with('success', 'Pesquisa criada com sucesso.');
     }
 
     public function show(Research $research)
