@@ -81,3 +81,4 @@ The Laravel framework is open-sourced software licensed under the [MIT license](
 13. php artisan migrate
 14. php artisan make:controller ResearchController --resource
 15. php artisan make:migration add_column_feedback --table=researches
+16. php artisan make:middleware EnsureUserHasAccessLevel
