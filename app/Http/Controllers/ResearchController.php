@@ -52,6 +52,8 @@ class ResearchController extends Controller
             'active' => 1,
             'user_id' => Auth::id(),
             'status_id' => 1,
+            'feedback' => null
+
         ]);
 
 
