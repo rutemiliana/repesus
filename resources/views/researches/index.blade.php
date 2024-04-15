@@ -62,10 +62,14 @@
                                         <div class="text-sm text-gray-500">{{ $research->status->description }}</div>
                                     </td>
                                     <td class="px-6 py-4 whitespace-normal text-center">
+                                        @if($research->status_id ==1) {{--Enviado para análise--}}
                                         <a href="{{ route('research.edit', $research->id) }}" class="text-indigo-600 hover:text-indigo-900">Editar</a>
+                                        @endif
                                     </td>
                                     <td class="px-6 py-4 whitespace-normal text-center">
+                                        @if($research->status_id ==1) {{--Enviado para análise--}}
                                         <a href="{{ route('research.destroy', $research->id)}}" class="text-red-600 hover:text-red-900">Deletar</a>
+                                        @endif
                                     </td>
                                 </tr>
                                 @endforeach

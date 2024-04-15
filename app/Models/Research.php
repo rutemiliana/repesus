@@ -26,6 +26,7 @@ class Research extends Model
         'active',
         'user_id',
         'status_id',
+        'feedback'
     ];
 
     public function user()

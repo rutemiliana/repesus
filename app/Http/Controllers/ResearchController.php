@@ -119,7 +119,7 @@ class ResearchController extends Controller
     public function researches()
     {
         $user = Auth::user();
-        $researches = Research::with('user', 'status')->where('user_id', '!=', $user->id)->where('status_id', 1)->where('active', 1)->paginate(10);
+        $researches = Research::with('user', 'status')->where('status_id', 3)->where('active', 1)->paginate(10); //status 3 = aprovado
         return view('researches.network', compact('researches'));
     }
 
