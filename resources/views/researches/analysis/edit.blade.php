@@ -1,7 +1,7 @@
 <x-app-layout>
     <x-slot name="header">
         <h2 class="font-semibold text-xl text-gray-800 leading-tight">
-            {{ __('Editar pesquisa') }}
+            {{ __('Analisar pesquisa') }}
         </h2>
     </x-slot>
 
@@ -91,7 +91,7 @@
 
                         <div>
                             <x-input-label for="feedback" :value="__('Parecer')" />
-                            <textarea id="feedback" name="feedback" class="block mt-1 w-full rounded-md shadow-sm border-gray-300 focus:border-indigo-300 focus:ring focus:ring-indigo-200 focus:ring-opacity-50" required>{{ old('feedback', $research->feedback) }}</textarea>
+                            <textarea id="feedback" name="feedback" class="block mt-1 w-full rounded-md shadow-sm border-gray-300 focus:border-indigo-300 focus:ring focus:ring-indigo-200 focus:ring-opacity-50">{{ old('feedback', $research->feedback) }}</textarea>
                             <x-input-error :messages="$errors->get('feedback')" class="mt-2" />
                         </div>
                         

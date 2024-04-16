@@ -61,7 +61,6 @@ class ResearchanAlysisController extends Controller
     {
         $request->validate([
             'status' => 'required',
-            'feedback' => 'required',
 
         ]);
 
@@ -72,7 +71,7 @@ class ResearchanAlysisController extends Controller
 
 
         return redirect()->route('researches.analysis.index')
-            ->with('success', 'Pesquisa atualizada com sucesso');
+            ->with('success', 'Pesquisa analisada com sucesso');
     }
 
     /**
