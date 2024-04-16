@@ -2,6 +2,8 @@
 
 use App\Http\Controllers\ProfileController;
 use App\Http\Controllers\ResearchController;
+use App\Http\Controllers\ResearchAnalysisController;
+
 
 use Illuminate\Support\Facades\Route;
 
@@ -39,6 +41,15 @@ Route::middleware('auth')->group(function () {
 
     Route::get('researches', [ResearchController::class, 'researches'])->name('researches.network');
     Route::get('/research/{research}/detail', [ResearchController::class, 'detail'])->name('research.detail');
+
+    //Filtro de rotas para administradores
+    Route::middleware('access_level:1')->group(function () {
+        Route::get('researches/analysis', [ResearchAnalysisController::class, 'index'])->name('researches.analysis.index');
+        Route::get('/research/analysis/{research}/edit', [ResearchAnalysisController::class, 'edit'])->name('research.analysis.edit');
+        Route::patch('research/analysis/{research}', [ResearchAnalysisController::class, 'update'])->name('research.analysis.update');
+
+
+    });
 
 
 

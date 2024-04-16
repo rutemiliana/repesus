@@ -13,7 +13,7 @@ class EnsureUserHasAccessLevel
         // Verifica se o usuário está logado e se o nível de acesso corresponde ao necessário
         if (!Auth::check() || Auth::user()->access_level_id != $requiredLevel) {
             // Redirecionar se não tiver o nível de acesso correto
-            return redirect('home')->with('error', 'Você não tem permissão para acessar essa área.');
+            return redirect('dashboard')->with('error', 'Você não tem permissão para acessar essa área.');
         }
 
         return $next($request);

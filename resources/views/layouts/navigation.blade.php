@@ -16,12 +16,13 @@
                         {{ __('Página inicial') }}
                     </x-nav-link>
                 </div>
-                @if(Auth::user()->access_level_id==2)
                 <div class="hidden space-x-8 sm:-my-px sm:ms-10 sm:flex">
                     <x-nav-link :href="route('researches.network')" :active="request()->routeIs('researches.network')">
                         {{ __('Pesquisas em andamento') }}
                     </x-nav-link>
                 </div>
+                @if(Auth::user()->access_level_id==2)
+
                 <div class="hidden space-x-8 sm:-my-px sm:ms-10 sm:flex">
                     <x-nav-link :href="route('research.index')" :active="request()->routeIs('research.index')">
                         {{ __('Minhas pesquisas') }}
@@ -30,7 +31,7 @@
                 @endif
                 @if(Auth::user()->access_level_id==1)
                 <div class="hidden space-x-8 sm:-my-px sm:ms-10 sm:flex">
-                    <x-nav-link :href="route('research.index')" :active="request()->routeIs('research.index')">
+                    <x-nav-link :href="route('researches.analysis.index')" :active="request()->routeIs('researches.analysis.index')">
                         {{ __('Analisar pesquisas') }}
                     </x-nav-link>
                 </div>
