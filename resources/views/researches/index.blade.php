@@ -67,7 +67,7 @@
                                         @endif
                                     </td>
                                     <td class="px-6 py-4 whitespace-normal text-center">
-                                        @if($research->status_id ==1) {{--Enviado para análise--}}
+                                        @if($research->status_id ==1 || $research->status_id ==5  ) {{--Enviado para análise ou pendente--}}
                                         <a href="{{ route('research.destroy', $research->id)}}" class="text-red-600 hover:text-red-900">Deletar</a>
                                         @endif
                                     </td>

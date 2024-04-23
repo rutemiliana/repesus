@@ -31,7 +31,7 @@
 
             <div class="flex justify-center items-center bg-blue-50 min-h-screen">
         <div>
-        <x-application-logo class="mx-auto h-20 w-auto" style=" width: 5000x" alt="Logo da Rede de Pesquisadores" />
+        <x-application-logo class="mx-auto h-20 w-auto" style=" width: 5000px" alt="Logo da Rede de Pesquisadores" />
 
         </div>
     </div>

@@ -5,7 +5,7 @@
             <p class="text-lg text-gray-700 mb-4">Olá, {{ Auth::user()->name }}!</p>
             <p class="text-lg text-gray-700 mb-4">É um prazer tê-lo de volta em nossa comunidade dedicada à pesquisa e inovação.</p>
             <p class="text-lg text-gray-700 mb-4">Esperamos que você aproveite ao máximo o seu tempo aqui, colaborando com outros pesquisadores, compartilhando conhecimento e explorando novas descobertas.</p>
-            <a href="#" class="inline-block bg-blue-600 hover:bg-blue-700 text-white font-semibold px-6 py-3 rounded-lg">Explorar Projetos</a>
+            <a href="{{route('researches.network')}}" class="inline-block bg-blue-600 hover:bg-blue-700 text-white font-semibold px-6 py-3 rounded-lg">Explorar Projetos</a>
         </div>
     </div>
 </x-app-layout>
