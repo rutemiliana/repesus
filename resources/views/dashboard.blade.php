@@ -1,5 +1,5 @@
 <x-app-layout>
-<div class="flex items-center justify-center min-h-screen">
+    <div class="flex items-center justify-center min-h-screen">
         <div class="max-w-lg bg-white p-8 rounded-lg shadow-lg text-center">
             <h1 class="text-3xl font-bold text-gray-800 mb-4">Bem-Vindo(a) à Rede de Pesquisadores do SUS-DF!</h1>
             <p class="text-lg text-gray-700 mb-4">Olá, {{ Auth::user()->name }}!</p>
