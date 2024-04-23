@@ -62,7 +62,7 @@
                                         <div class="text-sm text-gray-500">{{ $research->status->description }}</div>
                                     </td>
                                     <td class="px-6 py-4 whitespace-normal text-center">
-                                        @if($research->status_id ==1) {{--Enviado para análise--}}
+                                        @if($research->status_id ==1|| $research->status_id ==5 ) {{--Enviado para análise--}}
                                         <a href="{{ route('research.edit', $research->id) }}" class="text-indigo-600 hover:text-indigo-900">Editar</a>
                                         @endif
                                     </td>

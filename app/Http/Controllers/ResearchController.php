@@ -98,6 +98,8 @@ class ResearchController extends Controller
             'method' => $request->method,
             'schedule' => $request->schedule,
             'budget' => $request->budget,
+            'status_id' => 1,
+
         ]);
 
 

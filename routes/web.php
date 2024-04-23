@@ -47,8 +47,6 @@ Route::middleware('auth')->group(function () {
         Route::get('researches/analysis', [ResearchAnalysisController::class, 'index'])->name('researches.analysis.index');
         Route::get('/research/analysis/{research}/edit', [ResearchAnalysisController::class, 'edit'])->name('research.analysis.edit');
         Route::patch('research/analysis/{research}', [ResearchAnalysisController::class, 'update'])->name('research.analysis.update');
-
-
     });
 
 
