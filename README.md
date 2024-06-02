@@ -83,7 +83,17 @@ The Laravel framework is open-sourced software licensed under the [MIT license](
 15. php artisan make:migration add_column_feedback --table=researches
 16. php artisan make:middleware EnsureUserHasAccessLevel
 17. php artisan make:controller ResearchanAlysisController -r
+18. php artisan make:rule ValidCpf
+19. php artisan make:seeder AccessLevelsTableSeeder
+20. php artisan make:seeder AffiliationsTableSeeder
+php artisan make:seeder StatusSeeder
+
+
 
 
 # Run to project
 php artisan db:seed --class=AccessLevelsTableSeeder
+php artisan db:seed --class=AffiliationsTableSeeder
+php artisan db:seed --class=StatusSeeder
+
+
