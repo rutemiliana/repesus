@@ -19,7 +19,7 @@ class ProfileUpdateRequest extends FormRequest
             'email' => ['required', 'string', 'lowercase', 'email', 'max:255', Rule::unique(User::class)->ignore($this->user()->id)],
             'lattes' => ['required', 'string', 'max:255'],
             'orcid' => ['required', 'string', 'max:255'],
-            'affiliationId' => ['required', 'integer'],
+            'affiliation_id' => ['required', 'integer'],
         ];
     }
 }
