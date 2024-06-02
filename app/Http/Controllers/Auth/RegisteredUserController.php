@@ -13,6 +13,8 @@ use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Hash;
 use Illuminate\Validation\Rules;
 use Illuminate\View\View;
+use App\Rules\ValidCpf;
+
 
 class RegisteredUserController extends Controller
 {
@@ -35,7 +37,7 @@ class RegisteredUserController extends Controller
     {
         $request->validate([
             'name' => ['required', 'string', 'max:255'],
-            'cpf' => ['required', 'string', 'max:11','unique:'.User::class],
+            'cpf' => ['required', 'string', 'max:11','unique:'.User::class, new ValidCpf],
             'dateOfBirth' => ['required', 'date'],
             'email' => ['required', 'string', 'lowercase', 'email', 'max:255', 'unique:'.User::class],
             'lattes' => ['required', 'string', 'max:255'],
