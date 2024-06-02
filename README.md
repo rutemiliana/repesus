@@ -86,7 +86,7 @@ The Laravel framework is open-sourced software licensed under the [MIT license](
 18. php artisan make:rule ValidCpf
 19. php artisan make:seeder AccessLevelsTableSeeder
 20. php artisan make:seeder AffiliationsTableSeeder
-php artisan make:seeder StatusSeeder
+21. php artisan make:seeder StatusSeeder
 
 
 
