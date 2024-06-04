@@ -92,8 +92,16 @@ The Laravel framework is open-sourced software licensed under the [MIT license](
 
 
 # Run to project
-php artisan db:seed --class=AccessLevelsTableSeeder
-php artisan db:seed --class=AffiliationsTableSeeder
-php artisan db:seed --class=StatusSeeder
-
+Run git clone
+Run composer install
+Run cp .env.example .env
+Run php artisan key:generate
+Run npm run build
+Run php artisan migrate, before set conf to database
+Run php artisan db:seed --class=AccessLevelsTableSeeder
+Run php artisan db:seed --class=AffiliationsTableSeeder
+Run php artisan db:seed --class=StatusSeeder
+Run npm run dev
+Run php artisa serve
+Go to link localhost
 
