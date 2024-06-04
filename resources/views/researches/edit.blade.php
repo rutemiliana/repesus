@@ -70,13 +70,20 @@
                             <x-input-error :messages="$errors->get('schedule')" class="mt-2" />
                         </div>
 
-                        <!-- Budget -->
+                        <!-- feedback -->
                         <div>
                             <x-input-label for="budget" :value="__('Orçamento')" />
                             <textarea id="budget" name="budget" class="block mt-1 w-full rounded-md shadow-sm border-gray-300 focus:border-indigo-300 focus:ring focus:ring-indigo-200 focus:ring-opacity-50" required>{{ old('budget', $research->budget) }}</textarea>
                             <x-input-error :messages="$errors->get('budget')" class="mt-2" />
                         </div>
 
+                         <!-- Parecer -->
+                         @if($research->feedback!= NULL)
+                         <div>
+                            <x-input-label  class="mt-20" for="feedback" :value="__('Parecer')" />
+                            <textarea disabled id="feedback" name="feedback" class="block mt-1 w-full rounded-md shadow-sm border-gray-300 focus:border-indigo-300 focus:ring focus:ring-indigo-200 focus:ring-opacity-50" required>{{ old('feedback', $research->feedback) }}</textarea>
+                        </div>
+                        @endif
                         <div class="flex items-center justify-end mt-4">
                             <x-primary-button class="ms-4">
                                 {{ __('Salvar') }}
